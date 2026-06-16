@@ -1,0 +1,284 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   Mizan — Premium Legal AI Design System
+   Deep navy + warm gold, editorial Arabic
+   ============================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-gold-soft: var(--gold-soft);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-navy-deep: var(--navy-deep);
+  --color-ink: var(--ink);
+  --color-parchment: var(--parchment);
+
+  /* Legal tokens */
+  --color-citation: var(--citation);
+  --color-citation-foreground: var(--citation-foreground);
+  --color-citation-border: var(--citation-border);
+  --color-user-bubble: var(--user-bubble);
+  --color-user-bubble-foreground: var(--user-bubble-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: "Tajawal", "Noto Sans Arabic", system-ui, sans-serif;
+  --font-display: "Amiri", "Reem Kufi", "Tajawal", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Shadows & gradients */
+  --shadow-soft: 0 1px 2px oklch(0.15 0.04 255 / 0.04), 0 4px 16px oklch(0.15 0.04 255 / 0.06);
+  --shadow-elegant: 0 4px 12px oklch(0.15 0.04 255 / 0.08), 0 16px 48px oklch(0.15 0.04 255 / 0.10);
+  --shadow-gold: 0 4px 24px oklch(0.70 0.14 80 / 0.25);
+  --gradient-hero: linear-gradient(135deg, oklch(0.18 0.04 255) 0%, oklch(0.12 0.05 260) 100%);
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.12 80) 0%, oklch(0.65 0.14 70) 100%);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* Parchment cream background — editorial law journal feel */
+  --background: oklch(0.985 0.005 85);
+  --foreground: oklch(0.17 0.03 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.17 0.03 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.17 0.03 255);
+
+  /* Primary: Deep navy authority */
+  --primary: oklch(0.20 0.04 255);
+  --primary-foreground: oklch(0.98 0.005 85);
+
+  --secondary: oklch(0.95 0.008 85);
+  --secondary-foreground: oklch(0.20 0.04 255);
+
+  --muted: oklch(0.95 0.008 85);
+  --muted-foreground: oklch(0.50 0.02 250);
+
+  /* Accent: Warm gold */
+  --accent: oklch(0.78 0.12 80);
+  --accent-foreground: oklch(0.20 0.04 255);
+
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.98 0.005 85);
+
+  --border: oklch(0.90 0.01 85);
+  --input: oklch(0.92 0.01 85);
+  --ring: oklch(0.65 0.12 80);
+
+  /* Brand tokens */
+  --gold: oklch(0.72 0.13 75);
+  --gold-foreground: oklch(0.17 0.03 255);
+  --gold-soft: oklch(0.95 0.04 80);
+  --navy: oklch(0.20 0.04 255);
+  --navy-foreground: oklch(0.98 0.005 85);
+  --navy-deep: oklch(0.12 0.05 260);
+  --ink: oklch(0.17 0.03 255);
+  --parchment: oklch(0.97 0.012 85);
+
+  /* Legal */
+  --citation: oklch(0.97 0.025 80);
+  --citation-foreground: oklch(0.32 0.06 50);
+  --citation-border: oklch(0.85 0.06 80);
+  --user-bubble: oklch(0.20 0.04 255);
+  --user-bubble-foreground: oklch(0.98 0.005 85);
+
+  --chart-1: oklch(0.55 0.12 250);
+  --chart-2: oklch(0.65 0.10 145);
+  --chart-3: oklch(0.72 0.13 75);
+  --chart-4: oklch(0.60 0.14 25);
+  --chart-5: oklch(0.50 0.12 300);
+
+  --sidebar: oklch(0.20 0.04 255);
+  --sidebar-foreground: oklch(0.98 0.005 85);
+  --sidebar-primary: oklch(0.72 0.13 75);
+  --sidebar-primary-foreground: oklch(0.20 0.04 255);
+  --sidebar-accent: oklch(0.25 0.04 255);
+  --sidebar-accent-foreground: oklch(0.98 0.005 85);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.72 0.13 75);
+}
+
+.dark {
+  --background: oklch(0.12 0.04 260);
+  --foreground: oklch(0.96 0.01 85);
+  --card: oklch(0.17 0.04 258);
+  --card-foreground: oklch(0.96 0.01 85);
+  --popover: oklch(0.17 0.04 258);
+  --popover-foreground: oklch(0.96 0.01 85);
+  --primary: oklch(0.72 0.13 75);
+  --primary-foreground: oklch(0.12 0.04 260);
+  --secondary: oklch(0.22 0.04 258);
+  --secondary-foreground: oklch(0.96 0.01 85);
+  --muted: oklch(0.22 0.04 258);
+  --muted-foreground: oklch(0.70 0.02 85);
+  --accent: oklch(0.30 0.06 80);
+  --accent-foreground: oklch(0.92 0.06 80);
+  --destructive: oklch(0.60 0.18 25);
+  --destructive-foreground: oklch(0.96 0.01 85);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.72 0.13 75);
+
+  --gold: oklch(0.78 0.14 78);
+  --gold-foreground: oklch(0.12 0.04 260);
+  --gold-soft: oklch(0.25 0.05 80);
+  --navy: oklch(0.17 0.04 258);
+  --navy-foreground: oklch(0.96 0.01 85);
+  --navy-deep: oklch(0.08 0.03 260);
+  --ink: oklch(0.96 0.01 85);
+  --parchment: oklch(0.17 0.04 258);
+
+  --citation: oklch(0.22 0.04 80);
+  --citation-foreground: oklch(0.88 0.05 80);
+  --citation-border: oklch(1 0 0 / 12%);
+  --user-bubble: oklch(0.72 0.13 75);
+  --user-bubble-foreground: oklch(0.12 0.04 260);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    direction: rtl;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "kern";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.80 0.02 255);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.65 0.03 255);
+  }
+}
+
+/* Utilities */
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-gold-gradient {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-hero-gradient {
+  background-image: var(--gradient-hero);
+}
+
+@utility bg-gold-gradient {
+  background-image: var(--gradient-gold);
+}
+
+@utility shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+
+@utility shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+@utility shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}

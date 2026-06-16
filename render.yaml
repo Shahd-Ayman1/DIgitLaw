@@ -1,0 +1,68 @@
+services:
+  - type: web
+    name: digitlaw-backend
+    region: frankfurt
+    runtime: docker
+    repo: https://github.com/Shahd-Ayman1/DIgitLaw
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: standard
+    healthCheckPath: /health
+    envVars:
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: CORS_ORIGINS
+        value: '["https://digitlaw-frontend.onrender.com"]'
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: QDRANT_COLLECTION
+        value: egyptian_legal_articles
+      - key: EMBEDDING_MODEL
+        value: BAAI/bge-m3
+      - key: EMBEDDING_DEVICE
+        value: cpu
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: REDIS_URL
+        fromService:
+          name: digitlaw-redis
+          type: redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: UPLOAD_DIR
+        value: /data/uploads
+      - key: MAX_FILE_SIZE_MB
+        value: "15"
+    disk:
+      name: digitlaw-uploads
+      mountPath: /data/uploads
+      sizeGB: 1
+
+  - type: web
+    name: digitlaw-frontend
+    runtime: docker
+    repo: https://github.com/Shahd-Ayman1/DIgitLaw
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: starter
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://digitlaw-backend.onrender.com
+    dockerCommand: node server.js
+
+  - type: redis
+    name: digitlaw-redis
+    plan: starter
+    ipAllowList: []
+
+# NOTE: Qdrant is not provided as a managed Render service.
+# Use Qdrant Cloud (https://cloud.qdrant.io) free tier and set
+# QDRANT_URL / QDRANT_API_KEY as environment variables in the
+# Render dashboard for digitlaw-backend.
